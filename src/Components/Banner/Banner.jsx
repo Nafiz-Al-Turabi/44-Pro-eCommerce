@@ -20,6 +20,7 @@ import './Banner.css'
 
 
 const Banner = () => {
+
     const settings = {
         dots: true,
         infinite: true,
@@ -28,6 +29,26 @@ const Banner = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 1280, // Desktop & large tablets
+                settings: {
+                    slidesToShow: 2, // Show 2 cards
+                },
+            },
+            {
+                breakpoint: 1024, // Tablets
+                settings: {
+                    slidesToShow: 2, // Show 2 cards
+                },
+            },
+            {
+                breakpoint: 768, // Mobile devices
+                settings: {
+                    slidesToShow: 1, // Show 1 card
+                },
+            },
+        ],
     };
 
     return (

@@ -29,7 +29,7 @@ const Navbar = () => {
 
     return (
         <nav className="bg-white shadow-lg w-full top-0 left-0 z-50 font-normal ">
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Left side - Logo and Menu Items */}
                     <div className="flex items-center space-x-10">
