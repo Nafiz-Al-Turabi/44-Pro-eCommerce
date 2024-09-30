@@ -1,0 +1,24 @@
+.bg-slide-1 {
+    background-image: url('./../../assets/BannerImage/background_alt.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.bg-slide-2 {
+    background-image: url('./../../assets/BannerImage/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.bg-slide-3 {
+    background-image: url('./../../assets/BannerImage/custom-is-better-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.bg-slide-4 {
+    background-image: url('./../../assets/BannerImage/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -5,3 +5,10 @@
 .font-main {
     font-family: "Changa", sans-serif;
   }
+
+  .cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+  }
