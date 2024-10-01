@@ -31,21 +31,21 @@ const Banner = () => {
         autoplaySpeed: 3000,
         responsive: [
             {
-                breakpoint: 1280, // Desktop & large tablets
+                breakpoint: 1280, 
                 settings: {
-                    slidesToShow: 2, // Show 2 cards
+                    slidesToShow: 2,
                 },
             },
             {
-                breakpoint: 1024, // Tablets
+                breakpoint: 1024, 
                 settings: {
-                    slidesToShow: 2, // Show 2 cards
+                    slidesToShow: 2,
                 },
             },
             {
-                breakpoint: 768, // Mobile devices
+                breakpoint: 768, 
                 settings: {
-                    slidesToShow: 1, // Show 1 card
+                    slidesToShow: 1,
                 },
             },
         ],
@@ -53,13 +53,13 @@ const Banner = () => {
 
     return (
         <Slider {...settings}>
-            <div className='bg-slide-1 cover h-[600px] w-full bg-cover bg-center overflow-hidden'>
-                <div className='max-w-[1600px] mx-auto relative'>
+            <div className='bg-slide-1 cover h-[600px]  bg-cover bg-center overflow-hidden'>
+                <div className='max-w-[1500px] mx-auto relative'>
                     <img src={color1} alt="" className='w-[620px] mt-10' />
                     <div className='absolute top-12 left-16'>
                         <img src={text1} alt="" className='max-w-lg' />
                         <h1 className='text-xl text-white ml-16 mt-3'>Design for speed & performance in the field.</h1>
-                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-rose-500 from-rose-500 w-56 py-3 px-2 text-lg text-white rounded-md ml-16 mt-5 hover:underline">
+                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-rose-600 from-rose-500 w-56 py-3 px-2 text-lg text-white rounded-md ml-16 mt-5 hover:underline">
                             <img src={colorWheel} alt="" className='w-6 mr-2' /> Custom Builder
                         </Link>
                     </div>
@@ -68,13 +68,13 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-slide-2 cover h-[600px] w-full bg-cover bg-center overflow-hidden '>
+            <div className='bg-slide-2 cover h-[600px]  bg-cover bg-center overflow-hidden '>
                 <div className='max-w-[1600px] mx-auto relative'>
                     <img src={color2} alt="" className='w-[620px] mt-10' />
                     <div className='absolute top-12 left-16'>
                         <img src={text2} alt="" className='max-w-lg' />
                         <h1 className='text-xl text-white ml-16 mt-3'>Design for speed & performance in the field.</h1>
-                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-rose-500 from-rose-500 w-56 py-3 px-2 text-lg text-white rounded-md ml-16 mt-5 hover:underline">
+                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-cyan-200 from-cyan-400 w-56 py-3 px-2 text-lg text-black rounded-md ml-16 mt-5 hover:underline">
                             <img src={colorWheel} alt="" className='w-6 mr-2' /> Custom Builder
                         </Link>
                     </div>
@@ -83,13 +83,13 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-slide-3 cover h-[600px] w-full bg-cover bg-center overflow-hidden '>
+            <div className='bg-slide-3 cover h-[600px]  bg-cover bg-center overflow-hidden '>
                 <div className='max-w-[1600px] mx-auto relative'>
                     <img src={color3} alt="" className='w-[620px] mt-10' />
                     <div className='absolute top-12 left-16'>
                         <img src={text3} alt="" className='max-w-lg' />
                         <h1 className='text-xl text-white ml-16 mt-3'>Design for speed & performance in the field.</h1>
-                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-rose-500 from-rose-500 w-56 py-3 px-2 text-lg text-white rounded-md ml-16 mt-5 hover:underline">
+                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-cyan-200 from-cyan-400 w-56 py-3 px-2 text-lg text-black rounded-md ml-16 mt-5 hover:underline">
                             <img src={colorWheel} alt="" className='w-6 mr-2' /> Custom Builder
                         </Link>
                     </div>
@@ -98,13 +98,13 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-slide-4 cover h-[600px] w-full bg-cover bg-center overflow-hidden '>
+            <div className='bg-slide-4 cover h-[600px]  bg-cover bg-center overflow-hidden '>
                 <div className='max-w-[1600px] mx-auto relative'>
                     <img src={color4} alt="" className='w-[620px] mt-0 ' />
                     <div className='absolute top-12 left-16'>
                         <img src={text4} alt="" className='max-w-lg' />
                         <h1 className='text-xl text-white ml-16 mt-3'>Design for speed & performance in the field.</h1>
-                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-rose-500 from-rose-500 w-56 py-3 px-2 text-lg text-white rounded-md ml-16 mt-5 hover:underline">
+                        <Link to="/contact" className="flex items-center justify-center bg-gradient-to-tl to-green-400 from-yellow-400 w-56 py-3 px-2 text-lg text-black rounded-md ml-16 mt-5 hover:underline">
                             <img src={colorWheel} alt="" className='w-6 mr-2' /> Custom Builder
                         </Link>
                     </div>

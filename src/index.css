@@ -12,3 +12,7 @@
     background-repeat: no-repeat;
     height: 600px;
   }
+
+  .primary-btn{
+    @apply flex items-center justify-center py-3 px-2 text-sm md:text-lg  rounded-md mt-2
+  }

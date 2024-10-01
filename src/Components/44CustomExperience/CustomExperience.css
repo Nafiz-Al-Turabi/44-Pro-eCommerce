@@ -1,0 +1,27 @@
+.bg-image{
+    background-image: url('./../../assets/Home/grit-bg-light.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.slick-dots {
+    bottom: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.slick-dots li button:before {
+    font-size: 8px;
+    color: white; /* Change the color of the dots */
+}
+
+.slick-dots li.slick-active button:before {
+    color: white; /* Active dot color */
+}
+
+.relative {
+    position: relative;
+}
