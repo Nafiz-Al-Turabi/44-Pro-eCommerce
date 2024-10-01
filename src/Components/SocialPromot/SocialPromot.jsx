@@ -1,6 +1,7 @@
 import React from 'react';
 import image from './../../assets/SocialPromot/saleblock_speedcustom.jpg'
 import image2 from './../../assets/SocialPromot/240906_EndofSeason_Homepage_new.jpg'
+import svf from './../../assets/gloves.svg'
 
 const SocialPromot = () => {
     return (
@@ -21,6 +22,7 @@ const SocialPromot = () => {
                     <p className=' group-hover:underline text-lg'>Get Speed Custom Infield or Outfield models in 2 weeks</p>
                 </div>
             </div>
+            {/* <img src={svf} alt="" /> */}
         </div>
     );
 };

@@ -1,0 +1,12 @@
+.promot-bg-image{
+    background-image: url('./../../assets/Home/feature_wowfactor--desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.promot-bg-image2{
+    background-image: url('./../../assets/Home/feature_progradematerials--desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
