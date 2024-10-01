@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const PromotSection = () => {
     return (
         <div>
-            <div className='promot-bg-image bg-right md:bg-none max-w-[1500px] mx-auto lg:h-96 mt-20 p-10 '>
+            <div className='promot-bg-image bg-right md:bg-none max-w-[1500px] mx-auto lg:h-96 mt-20 p-10 rounded-md '>
                 <div className='bg-black/95 lg:w-2/6 text-white p-10 rounded-md'>
                     <h3 className='text-lg font-bold text-yellow-600'>44 Pro #1 Custom Brand</h3>
                     <h1 className='text-3xl font-bold mb-5'>Custom Is More Than Color</h1>
@@ -16,7 +16,7 @@ const PromotSection = () => {
                     </Link>
                 </div>
             </div>
-            <div className='promot-bg-image2 max-w-[1500px] mx-auto lg:h-full mt-20 p-10 flex justify-end '>
+            <div className='promot-bg-image2 max-w-[1500px] mx-auto lg:h-full mt-20 p-10 flex justify-end rounded-md '>
                 <div className='bg-black/95 lg:w-2/6 text-white p-10 rounded-md '>
                     <h3 className='text-lg font-bold text-yellow-600'>Get The Pro Treatment</h3>
                     <h1 className='text-3xl font-bold mb-5'>Highest Quality Materials in the Game</h1>
