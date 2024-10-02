@@ -13,7 +13,7 @@ const Home = () => {
             <SocialPromot />
             <CustomExperience />
             <PromotSection />
-            {/* <PlayerComments /> */}
+            <PlayerComments />
             <InstagramXContact />
         </div>
     );

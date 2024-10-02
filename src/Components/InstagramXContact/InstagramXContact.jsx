@@ -60,8 +60,8 @@ const InstagramXContact = () => {
                     </div>
                     <div className='text-center mt-5  xl:flex gap-5'>
                         <p className='flex items-center gap-2'> <FaCheckCircle className='text-green-500' /> New Product Launch Info</p>
-                        <p className='flex items-center gap-2'> <FaCheckCircle className='text-green-500' /> New Product Launch Info</p>
-                        <p className='flex items-center gap-2'> <FaCheckCircle className='text-green-500' /> New Product Launch Info</p>
+                        <p className='flex items-center gap-2'> <FaCheckCircle className='text-green-500' /> Advanced Notice On Sales</p>
+                        <p className='flex items-center gap-2'> <FaCheckCircle className='text-green-500' /> Subscriber Exclusive Deals</p>
                     </div>
                     <div className="mt-10 xl:mt-20">
                         <div className="flex flex-col">
