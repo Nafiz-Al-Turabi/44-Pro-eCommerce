@@ -5,7 +5,7 @@ import svf from './../../assets/gloves.svg'
 
 const SocialPromot = () => {
     return (
-        <div className='mt-20 max-w-[1500px] mx-auto px-4'>
+        <div className='mt-20 max-w-[1536px] mx-auto px-4'>
             <div className='text-center'>
                 <p className='text-lg'>Always Custom Since 2011</p>
                 <h1 className='text-4xl xl:text-5xl font-bold mt-2'>Over 500,000 Players Choose 44</h1>

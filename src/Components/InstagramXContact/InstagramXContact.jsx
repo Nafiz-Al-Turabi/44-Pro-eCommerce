@@ -13,7 +13,7 @@ import './InstagramXContact.css'
 
 const InstagramXContact = () => {
     return (
-        <div className='bg-image-dark pt-20 mt-20'>
+        <div className='bg-image-dark pt-20'>
             <div className='flex justify-center w-full text-white'>
                 <div className='text-center relative'>
                     <p className='text-lg'>Latest From Instagram</p>

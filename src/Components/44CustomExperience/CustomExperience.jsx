@@ -36,7 +36,7 @@ const CustomExperience = () => {
     };
     return (
         <div className='bg-image bg-cover mt-20 p-6'>
-            <div className='max-w-[1500px] mx-auto'>
+            <div className='max-w-[1536px] mx-auto'>
                 <div className='text-center relative'>
                     <p className='text-lg'>44 Pro Custom Experience</p>
                     <h1 className='text-4xl xl:text-5xl font-bold mt-2'>Start Building</h1>

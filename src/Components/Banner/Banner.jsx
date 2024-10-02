@@ -54,7 +54,7 @@ const Banner = () => {
     return (
         <Slider {...settings}>
             <div className='bg-slide-1 cover h-[600px]  bg-cover bg-center overflow-hidden'>
-                <div className='max-w-[1500px] mx-auto relative'>
+                <div className='max-w-[1536px] mx-auto relative'>
                     <img src={color1} alt="" className='w-[620px] mt-10' />
                     <div className='absolute top-12 left-16'>
                         <img src={text1} alt="" className='max-w-lg' />
@@ -69,7 +69,7 @@ const Banner = () => {
                 </div>
             </div>
             <div className='bg-slide-2 cover h-[600px]  bg-cover bg-center overflow-hidden '>
-                <div className='max-w-[1600px] mx-auto relative'>
+                <div className='max-w-[1536px] mx-auto relative'>
                     <img src={color2} alt="" className='w-[620px] mt-10' />
                     <div className='absolute top-12 left-16'>
                         <img src={text2} alt="" className='max-w-lg' />
@@ -84,7 +84,7 @@ const Banner = () => {
                 </div>
             </div>
             <div className='bg-slide-3 cover h-[600px]  bg-cover bg-center overflow-hidden '>
-                <div className='max-w-[1600px] mx-auto relative'>
+                <div className='max-w-[1536px] mx-auto relative'>
                     <img src={color3} alt="" className='w-[620px] mt-10' />
                     <div className='absolute top-12 left-16'>
                         <img src={text3} alt="" className='max-w-lg' />
@@ -99,7 +99,7 @@ const Banner = () => {
                 </div>
             </div>
             <div className='bg-slide-4 cover h-[600px]  bg-cover bg-center overflow-hidden '>
-                <div className='max-w-[1600px] mx-auto relative'>
+                <div className='max-w-[1536px] mx-auto relative'>
                     <img src={color4} alt="" className='w-[620px] mt-0 ' />
                     <div className='absolute top-12 left-16'>
                         <img src={text4} alt="" className='max-w-lg' />

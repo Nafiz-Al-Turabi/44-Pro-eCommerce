@@ -5,6 +5,7 @@ import CustomExperience from '../../Components/44CustomExperience/CustomExperien
 import PromotSection from '../../Components/PromotSection/PromotSection';
 import PlayerComments from '../../Components/PlayerComments/PlayerComments';
 import InstagramXContact from '../../Components/InstagramXContact/InstagramXContact';
+import CustomCurated from '../../Components/CustomCurated/CustomCurated';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <CustomExperience />
             <PromotSection />
             <PlayerComments />
+            <CustomCurated />
             <InstagramXContact />
         </div>
     );

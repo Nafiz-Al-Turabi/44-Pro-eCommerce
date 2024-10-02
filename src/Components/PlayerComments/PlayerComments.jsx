@@ -15,7 +15,7 @@ const Clubhouse = () => {
         <div>
           <p>From The Clubhouse</p>
           <div className="flex justify-between mb-10">
-            <p className="text-5xl my-3 font-bold">What Players Are Saying</p>
+            <p className="text-xl  xl:text-5xl my-3 font-bold">What Players Are Saying</p>
             <div className="mb-4">
               <button
                 onClick={() => swiperRef.current?.slidePrev()}
@@ -87,7 +87,7 @@ const Clubhouse = () => {
                   the price for this quality of glove!
                 </p>
               </div>
-              <div>
+              <div className="mt-20">
                 <hr className="border-1 border-gray-500 mb-5" />
                 <p>Drew F</p>
                 <p>Custom Glove</p>
