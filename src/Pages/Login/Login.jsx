@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import logo from './../../assets/logo.svg';
+import axiosInstance from '../../Axios/AxiosInstance';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 
-    const onSubmit = (data) => {
-        console.log(data); 
+    const onSubmit = async (data) => {
+        try {
+            const response = await axiosInstance.post('/login', data)
+            console.log(response.data);
+        } catch (error) {
+
+        }
     };
 
     return (
@@ -20,8 +26,8 @@ const Login = () => {
                 </Link>
                 <h1 className='text-3xl font-bold text-center my-6'>Sign in to your account</h1>
                 <p className='text-center'>or <span className='text-blue-400'><Link to='/signup'>register if you don't have one</Link></span></p>
-                
-                <form onSubmit={handleSubmit(onSubmit)}>
+
+                <form onSubmit={handleSubmit(onSubmit)} className='md:w-96'>
                     <div className='my-4'>
                         <label className='block'>Email</label>
                         <input
@@ -31,7 +37,7 @@ const Login = () => {
                         />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
-                    
+
                     <div className='my-4 relative'>
                         <label className='block'>Password</label>
                         <input
@@ -40,7 +46,7 @@ const Login = () => {
                             className='border p-2 w-full'
                         />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
-                        
+
                         <button
                             type="button"
                             className='absolute right-3 top-10'
@@ -49,7 +55,7 @@ const Login = () => {
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
-                    
+
                     <div className='flex items-center justify-between my-4'>
                         <div>
                             <input

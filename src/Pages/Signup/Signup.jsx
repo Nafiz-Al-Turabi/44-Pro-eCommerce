@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import logo from './../../assets/logo.svg';
+import axiosInstance from '../../Axios/AxiosInstance';
 
 const Signup = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [showPassword, setShowPassword] = useState(false); 
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         console.log(data);
+        try {
+            const response = await axiosInstance.post('/signup',data)
+            console.log(response.data);
+       } catch (error) {
+
+        }
     };
 
     const password = watch('password', '');
@@ -22,9 +29,9 @@ const Signup = () => {
                     <img src={logo} alt="logo" className='w-40' />
                 </Link>
                 <h1 className='text-3xl font-bold text-center my-6'>Create your account</h1>
-                <p className='text-center'>or <span><Link to='/login'>sign in if you already have one</Link></span></p>
-                
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <p className='text-center'>or <span className='text-blue-500'><Link to='/login'>sign in if you already have one</Link></span></p>
+
+                <form onSubmit={handleSubmit(onSubmit)} className='md:w-96'>
                     <div className='my-4'>
                         <label className='block'>Name</label>
                         <input
@@ -44,7 +51,7 @@ const Signup = () => {
                         />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
-                    
+
                     <div className='my-4 relative'>
                         <label className='block'>Password</label>
                         <input
@@ -53,7 +60,7 @@ const Signup = () => {
                             className='border p-2 w-full'
                         />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
-                        
+
                         <button
                             type="button"
                             className='absolute right-3 top-10'
@@ -62,7 +69,7 @@ const Signup = () => {
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
-                    
+
                     <div className='my-4 relative'>
                         <label className='block'>Confirm Password</label>
                         <input
@@ -74,7 +81,7 @@ const Signup = () => {
                             className='border p-2 w-full'
                         />
                         {errors.confirmPassword && <p className='text-red-500'>{errors.confirmPassword.message}</p>}
-                        
+
                         <button
                             type="button"
                             className='absolute right-3 top-10'

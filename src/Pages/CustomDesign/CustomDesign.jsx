@@ -58,11 +58,11 @@ const CustomDesign = () => {
 
   return (
     <div>
-      <div className="grid lg:grid-cols-2 grid-cols-1 text-[#7e8292ee]">
-        <div className="w-96">
+      <div className="grid lg:grid-cols-2 grid-cols-1">
+        <div className="lg:w-3/4">
           <GlovesSVG color={color} />
         </div>
-        <div className="mt-32">
+        <div className="my-10 2xl:my-32">
           <div className="flex justify-between bg-zinc-100">
             <div>
               <p
