@@ -5,6 +5,7 @@ import Layout from "../Layout/Layout";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
+import CustomDesign from "../Pages/CustomDesign/CustomDesign";
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +23,11 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup />
-            }
+            },
+            {
+                path: '/customDesign',
+                element: <CustomDesign />
+            },
         ]
     },
 ]);

@@ -103,7 +103,7 @@ const Navbar = () => {
                             <Link to="/about" className="text-gray-800 hover:text-gray-900">Trending Designs</Link>
                             <Link to="/contact" className="text-gray-800 hover:text-gray-900">Team 44</Link>
                             <Link to="/contact" className="text-gray-800 hover:text-gray-900">Help Center</Link>
-                            <Link to="/contact" className="flex items-center bg-gray-900 py-3 px-5 text-white rounded-md">
+                            <Link to="/customDesign" className="flex items-center bg-gray-900 py-3 px-5 text-white rounded-md">
                                 <img src={colorWheel} alt="" className='w-6 mr-2' /> Custom Builder
                             </Link>
 
