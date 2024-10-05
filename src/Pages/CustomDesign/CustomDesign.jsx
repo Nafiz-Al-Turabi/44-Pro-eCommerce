@@ -7,6 +7,7 @@ import CustomColors from "../../Components/CustomColors/CustomColors";
 
 const CustomDesign = () => {
   const swiperRef = useRef(null);
+  const [activeTab, setActiveTab] = useState("Base"); // State to manage the active tab
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const [color, setColor] = useState({
@@ -57,46 +58,97 @@ const CustomDesign = () => {
   ];
 
   return (
-    <div>
+    <div className="xl:max-w-[1536px] mx-auto p-4">
       <div className="grid lg:grid-cols-2 grid-cols-1">
-        <div className="lg:w-3/4">
+        <div className="lg:w-3/4 lg:h-screen">
           <GlovesSVG color={color} />
         </div>
         <div className="my-10 2xl:my-32">
-          <div className="flex justify-between bg-zinc-100">
-            <div>
-              <p
-                onClick={() => swiperRef.current?.slidePrev()}
-                className={`p-4 mr-2 ${isBeginning ? "hidden" : "flex"} text-blue-500 rounded transition-opacity font-semibold cursor-pointer`}
-              >
-                <FaArrowLeft style={{ fontSize: "14px", margin: "5px" }} /> Previous
-              </p>
-            </div>
+          <div className="flex justify-center w-full">
             <button
-              onClick={() => swiperRef.current?.slideNext()}
-              className={`p-4 ${isEnd ? "hidden" : "flex"} text-blue-500 rounded transition-opacity font-semibold cursor-pointer`}
+              onClick={() => setActiveTab("Base")}
+              className={`h-20 text-left pl-2 ${activeTab === "Base" ? "bg-[#ffb948] text-white shadow-inner shadow-gray-500/20 w-full" : "bg-gray-300 hover:bg-zinc-400 shadow-inner shadow-gray-500/20 w-full"}`}
             >
-              Next <FaArrowRight style={{ fontSize: "14px", margin: "5px" }} />
+              Base
+              <span className="block">0 remaining</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("Color")}
+              className={`h-20 text-left pl-2 ${activeTab === "Color" ? "bg-[#ffb948] text-white shadow-inner shadow-gray-500/20 w-full" : "bg-gray-300 hover:bg-zinc-400 shadow-inner shadow-gray-500/20 w-full"}`}
+            >
+              Color
+              <span className="block">0 remaining</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("Personalize")}
+              className={`h-20 text-left pl-2 ${activeTab === "Personalize" ? "bg-[#ffb948] text-white shadow-inner shadow-gray-500/20 w-full" : "bg-gray-300 hover:bg-zinc-400 shadow-inner shadow-gray-500/20 w-full"}`}
+            >
+              Personalize
+              <span className="block">0 remaining</span>
             </button>
           </div>
-          <Swiper
-            ref={swiperRef}
-            spaceBetween={50}
-            slidesPerView={1}
-            onSlideChange={handleSlideChange}
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
-            }}
-          >
-            {colorParts.map(({ label, part }) => (
-              <SwiperSlide key={part}>
-                <p className="p-10 text-xl">{label}</p>
-                <CustomColors color={color} handleColor={(value) => handleColor(part, value)} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {activeTab === "Base" && (
+            <div className="">
+              <h2 className="text-xl font-semibold bg-gray-100 p-5">Size</h2>
+              <div>
+                <div className="flex items-center gap-6 text-xl p-5 bg-zinc-50 hover:bg-zinc-300 cursor-pointer" onClick={() => document.getElementById('customCheckbox').click()}>
+                  <input type="checkbox" id="customCheckbox" className="appearance-none w-6 h-6 border border-gray-400 rounded-full checked:bg-green-500 checked:border-transparent focus:outline-none" />
+                  <span>12.5"</span>
+                </div>
+
+              </div>
+            </div>
+          )}
+
+          {activeTab === "Color" && (
+            <div className="bg-zinc-50  ">
+              <div className="flex justify-between bg-zinc-100">
+                <div>
+                  <p
+                    onClick={() => swiperRef.current?.slidePrev()}
+                    className={`p-4 mr-2 ${isBeginning ? "hidden" : "flex"} text-blue-500 rounded transition-opacity font-semibold cursor-pointer`}
+                  >
+                    <FaArrowLeft style={{ fontSize: "14px", margin: "5px" }} /> Previous
+                  </p>
+                </div>
+                <button
+                  onClick={() => swiperRef.current?.slideNext()}
+                  className={`p-4 ${isEnd ? "hidden" : "flex"} text-blue-500 rounded transition-opacity font-semibold cursor-pointer`}
+                >
+                  Next <FaArrowRight style={{ fontSize: "14px", margin: "5px" }} />
+                </button>
+              </div>
+              <div className="h-[500px] overflow-auto">
+                <Swiper
+                  ref={swiperRef}
+                  spaceBetween={50}
+                  slidesPerView={1}
+                  onSlideChange={handleSlideChange}
+                  onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
+                    setIsBeginning(swiper.isBeginning);
+                    setIsEnd(swiper.isEnd);
+                  }}
+                >
+                  {colorParts.map(({ label, part }) => (
+                    <SwiperSlide key={part}>
+                      <p className="p-10 text-xl">{label}</p>
+                      <CustomColors color={color} handleColor={(value) => handleColor(part, value)} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "Personalize" && (
+            <div className="">
+              <h2 className="text-xl font-semibold bg-gray-100 p-5">Personalize</h2>
+
+            </div>
+          )}
+          <button className="px-10 py-2 text-xl bg-zinc-100 rounded-md mt-5">Add To Cart <span>$256</span></button>
+          <p className="text-sm mt-2">To add to cart, please answer the required steps in the Base and Personalize sections.</p>
         </div>
       </div>
     </div>

@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.font-main {
-    font-family: "Changa", sans-serif;
-  }
+* {
+  font-family: "Changa", sans-serif;
+}
 
-  .cover {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 600px;
-  }
+.cover {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+}
 
-  .primary-btn{
-    @apply flex items-center justify-center py-3 px-2 text-sm md:text-lg  rounded-md mt-2
-  }
+.primary-btn {
+  @apply flex items-center justify-center py-3 px-2 text-sm md:text-lg rounded-md mt-2
+}
