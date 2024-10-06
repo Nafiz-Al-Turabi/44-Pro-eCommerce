@@ -3,39 +3,53 @@ import axiosInstance from '../../Axios/AxiosInstance';
 
 export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            const userData = decodeToken(token);
-            setUser(userData);
-        }
+        const fetchUser = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                setLoading(false); 
+                return;
+            }
+            try {
+                const response = await axiosInstance.get('/user', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                setUser(response.data);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            } finally {
+                setLoading(false); 
+            }
+        };
+        fetchUser();
     }, []);
 
-    const signup = async (username, password) => {
+    const signup = async (email, password) => {
         try {
-            const response = await axiosInstance.post('/signup', { username, password });
-            const token = response.data.token;
-
-            localStorage.setItem('token', token);
-            setUser(decodeToken(token));
+            const response = await axiosInstance.post('/signup', { email, password });
+            console.log('Signup successful:', response.data);
         } catch (error) {
             console.error('Signup error:', error);
         }
     };
 
-    const login = async (username, password) => {
+    const login = async (email, password) => {
         try {
-            const response = await axiosInstance.post('/login', { username, password });
-            const token = response.data.token;
+            const response = await axiosInstance.post('/login', { email, password });
+            const { token, userData } = response.data;
 
             localStorage.setItem('token', token);
-            setUser(decodeToken(token));
+
+            setUser(userData);
+            console.log('Login successful:', response.data);
         } catch (error) {
             console.error('Login error:', error);
-            // Handle error (e.g., show a notification)
         }
     };
 
@@ -45,15 +59,10 @@ const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, signup, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, signup, logout }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
 export default AuthProvider;
-// Implement a function to decode the JWT token
-const decodeToken = (token) => {
-    // Decode your token here (e.g., using jwt-decode library)
-    return { username: 'exampleUser' }; // Replace with actual decoding logic
-};

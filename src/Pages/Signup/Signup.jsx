@@ -11,12 +11,14 @@ const Signup = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const onSubmit = async(data) => {
-        console.log(data);
-        try {
-            const response = await axiosInstance.post('/signup',data)
-            console.log(response.data);
-       } catch (error) {
+        // Exclude confirmPassword from the data sent to the server
+        const { confirmPassword, ...signupData } = data;
 
+        try {
+            const response = await axiosInstance.post('/signup', signupData);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Signup error:', error);
         }
     };
 

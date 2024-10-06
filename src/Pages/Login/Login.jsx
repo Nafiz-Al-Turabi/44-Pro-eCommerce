@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import logo from './../../assets/logo.svg';
-import axiosInstance from '../../Axios/AxiosInstance';
+import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const { login,user } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosInstance.post('/login', data)
-            console.log(response.data);
+            await login(data.email, data.password)
+            alert('login success')
+            navigate('/')
         } catch (error) {
-
+            console.log('Login failed. Please check your credentials.');
         }
     };
+    console.log(user);
 
     return (
         <div className='h-dvh flex justify-center items-center'>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from './../../assets/logo.svg'
 import colorWheel from './../../assets/BannerImage/color-wheel.png'
@@ -9,12 +9,15 @@ import navImage from './../../assets/Navbar/alloy-xp-homepage-bat-image.png'
 import navImage2 from './../../assets/Navbar/custom-glove.png'
 import navImage3 from './../../assets/Navbar/custom-batting-gloves.png'
 import navImage4 from './../../assets/Navbar/custom-guards.png'
+import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(true);
+    const { user } = useContext(AuthContext)
+    console.log(user);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
