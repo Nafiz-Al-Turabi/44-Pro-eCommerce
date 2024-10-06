@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
             }
         };
         fetchUser();
-    }, []);
+    }, [user]);
 
     const signup = async (email, password) => {
         try {
@@ -45,9 +45,8 @@ export const AuthProvider = ({ children }) => {
             const { token, userData } = response.data;
 
             localStorage.setItem('token', token);
-
+            console.log(userData);
             setUser(userData);
-            console.log('Login successful:', response.data);
         } catch (error) {
             console.error('Login error:', error);
         }

@@ -16,3 +16,18 @@
 .primary-btn {
   @apply flex items-center justify-center py-3 px-2 text-sm md:text-lg rounded-md mt-2
 }
+
+.animation{
+  animation: fade-up .8s cubic-bezier(0,.8,.01,1.0) forwards;
+  opacity: 0;
+}
+@keyframes fade-up{
+  0%{
+      opacity: 0;
+      transform: translateY(0rem) scale(.8);
+  }
+  100%{
+      opacity: 1;
+      transform: none;
+  }
+};
