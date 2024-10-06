@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import CustomDesign from "../Pages/CustomDesign/CustomDesign";
+import UserDashboard from "../Dashboard/UserDashboard/UserDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {
                 path: '/customDesign',
                 element: <CustomDesign />
+            },
+            {
+                path: '/userdashboard',
+                element: <UserDashboard />
             },
         ]
     },

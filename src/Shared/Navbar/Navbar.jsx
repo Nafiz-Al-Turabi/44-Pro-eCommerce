@@ -127,8 +127,7 @@ const Navbar = () => {
                                     {
                                         isAccOpen &&
                                         <div className='animation flex flex-col absolute w-56 bg-white top-10 right-1 border-2 border-zinc-50 rounded pb-1 shadow-lg '>
-                                            <p>{user.name}</p>
-                                            <Link to='/' className='py-2 px-3 hover:text-gray-600'>Account settings {user.ane}</Link>
+                                            <Link to='/userdashboard' className='py-2 px-3 hover:text-gray-600'>Account settings {user.ane}</Link>
                                             <Link to='/' className='py-2 px-3 hover:text-gray-600'>Orders</Link>
                                             <Link to='/' className='py-2 px-3 hover:text-gray-600'>Saved Design</Link>
                                             <hr className='my-1' />

@@ -20,7 +20,8 @@ export const AuthProvider = ({ children }) => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setUser(response.data);
+                console.log('API response data:', response.data);
+                setUser(response.data[0]);
             } catch (error) {
                 console.error('Error fetching user:', error);
             } finally {
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             }
         };
         fetchUser();
-    }, [user]);
+    }, []);
 
     const signup = async (email, password) => {
         try {
