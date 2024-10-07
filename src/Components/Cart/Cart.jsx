@@ -4,7 +4,7 @@ import useCart from '../../Hooks/useCart';
 
 const Cart = () => {
     const [carts, setCarts] = useState([])
-    const { cartItems,deleteItem,refetch} = useCart()
+    const { cartItems, deleteItem, refetch } = useCart()
     useEffect(() => {
         const fetchCarts = () => {
             const storedItems = localStorage.getItem('cartItems');
@@ -15,7 +15,7 @@ const Cart = () => {
 
         fetchCarts();
     }, []);
-    
+
     return (
         <div className='primary-bg pb-10'>
             <h1 className='text-6xl text-zinc-900 font-bold text-center py-10  '>cart</h1>
@@ -33,7 +33,7 @@ const Cart = () => {
                     <div className='sm:mx-4'>
                         {
                             carts.map((cart, index) =>
-                                <CartCards key={index} cartItem={cart} deleteItem={()=> deleteItem(index)} />
+                                <CartCards key={index} cartItem={cart} deleteItem={() => deleteItem(index)} />
                             )
                         }
                     </div>

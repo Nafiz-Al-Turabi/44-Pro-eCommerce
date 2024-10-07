@@ -221,7 +221,7 @@ const CustomDesign = () => {
                 </ul>
               </div>
             )}
-            <button  disabled={!areAllColorsSelected()} onClick={saveToCart} className="px-10 py-2 text-xl bg-zinc-100 rounded-md mt-5">Add To Cart <span>$256</span></button>
+            <button   onClick={saveToCart} className="px-10 py-2 text-xl bg-zinc-100 rounded-md mt-5">Add To Cart <span>$256</span></button>
             <p className="text-sm mt-2">To add to cart, please answer the required steps in the Base and Personalize sections.</p>
           </div>
         </div>
