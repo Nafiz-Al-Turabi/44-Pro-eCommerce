@@ -1,41 +1,42 @@
-import { useState, useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
+const getCartItems = () => {
+  return JSON.parse(localStorage.getItem("cartItems")) || [];
+};
 
 const useCart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    setCartItems(storedCartItems);
-  }, []);
+  const { data: cartItems = [], refetch } = useQuery({
+    queryKey: ["cartItems"],
+    queryFn: getCartItems,
+    initialData: [],
+    refetchOnWindowFocus: false, 
+  });
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("cartItems", JSON.stringify(items));
+    queryClient.invalidateQueries(["cartItems"]);
   };
 
   const addItem = (newItem) => {
-    setCartItems((prevItems) => {
-      const updatedItems = [...prevItems, newItem];
-      saveToLocalStorage(updatedItems);
-      return updatedItems;
-    });
+    const updatedItems = [...cartItems, newItem];
+    saveToLocalStorage(updatedItems);
+    refetch();
   };
 
   const deleteItem = (itemId) => {
-    setCartItems((prevItems) => {
-      const updatedItems = prevItems.filter((item, index) => index !== itemId);
-      saveToLocalStorage(updatedItems);
-      return updatedItems;
-    });
+    const updatedItems = cartItems.filter((_, index) => index !== itemId);
+    saveToLocalStorage(updatedItems);
+    refetch();
   };
 
   const updateItem = (itemId, updatedItem) => {
-    setCartItems((prevItems) => {
-      const updatedItems = prevItems.map((item, index) =>
-        index === itemId ? updatedItem : item
-      );
-      saveToLocalStorage(updatedItems);
-      return updatedItems;
-    });
+    const updatedItems = cartItems.map((item, index) =>
+      index === itemId ? updatedItem : item
+    );
+    saveToLocalStorage(updatedItems);
+    refetch(); 
   };
 
   return {
@@ -43,6 +44,7 @@ const useCart = () => {
     addItem,
     deleteItem,
     updateItem,
+    refetch,
   };
 };
 

@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
             }
         };
         fetchUser();
-    }, [user]);
+    }, []);
 
     const signup = async (email, password) => {
         try {

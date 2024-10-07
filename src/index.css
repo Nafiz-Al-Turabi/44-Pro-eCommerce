@@ -16,6 +16,13 @@
 .primary-btn {
   @apply flex items-center justify-center py-3 px-2 text-sm md:text-lg rounded-md mt-2
 }
+.bg-btn{
+  @apply bg-[#0D98F0]
+}
+.primary-bg{
+  @apply bg-[#F5F5F5]
+}
+
 
 .animation{
   animation: fade-up .8s cubic-bezier(0,.8,.01,1.0) forwards;
