@@ -10,7 +10,7 @@ const CartCards = ({ cartItem, deleteItem }) => {
     const colorArray = Object.values(colors)
     console.log(colorArray);
     return (
-        <div className="max-w-3xl  mb-5 mx-auto bg-white rounded-lg shadow-lg overflow-hidden lg:flex relative ">
+        <div className="max-w-5xl  mb-5 mx-auto bg-white rounded-lg shadow-lg overflow-hidden lg:flex relative ">
             <div className="p-4 w-1/2">
                 <h2 className="text-lg font-bold text-center text-gray-800">Product Details</h2>
                 <div className="mt-4">

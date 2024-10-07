@@ -1,34 +1,35 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
+const CART_ITEMS_KEY = "cartItems";
+const QUERY_KEY = ["cartItems"];
+
 const getCartItems = () => {
-  return JSON.parse(localStorage.getItem("cartItems")) || [];
+  return JSON.parse(localStorage.getItem(CART_ITEMS_KEY)) || [];
 };
 
 const useCart = () => {
   const queryClient = useQueryClient();
 
   const { data: cartItems = [], refetch } = useQuery({
-    queryKey: ["cartItems"],
+    queryKey: QUERY_KEY,
     queryFn: getCartItems,
     initialData: [],
-    refetchOnWindowFocus: false, 
+    refetchOnWindowFocus: false,
   });
 
   const saveToLocalStorage = (items) => {
-    localStorage.setItem("cartItems", JSON.stringify(items));
-    queryClient.invalidateQueries(["cartItems"]);
+    localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(items));
+    queryClient.setQueryData(QUERY_KEY, items); 
   };
 
   const addItem = (newItem) => {
     const updatedItems = [...cartItems, newItem];
     saveToLocalStorage(updatedItems);
-    refetch();
   };
 
   const deleteItem = (itemId) => {
     const updatedItems = cartItems.filter((_, index) => index !== itemId);
     saveToLocalStorage(updatedItems);
-    refetch();
   };
 
   const updateItem = (itemId, updatedItem) => {
@@ -36,15 +37,20 @@ const useCart = () => {
       index === itemId ? updatedItem : item
     );
     saveToLocalStorage(updatedItems);
-    refetch(); 
   };
+
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => total + (item.price || 0), 0);
+};
+
+const total = calculateTotal();
 
   return {
     cartItems,
     addItem,
     deleteItem,
     updateItem,
-    refetch,
+    total,
   };
 };
 
