@@ -3,18 +3,15 @@ import { useState, useEffect } from "react";
 const useCart = () => {
   const [cartItems, setCartItems] = useState([]);
 
-  // Load cart items from local storage on initial render
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(storedCartItems);
   }, []);
 
-  // Save cart items to local storage
   const saveToLocalStorage = (items) => {
     localStorage.setItem("cartItems", JSON.stringify(items));
   };
 
-  // Add item to cart
   const addItem = (newItem) => {
     setCartItems((prevItems) => {
       const updatedItems = [...prevItems, newItem];
@@ -23,7 +20,6 @@ const useCart = () => {
     });
   };
 
-  // Delete item from cart
   const deleteItem = (itemId) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter((item, index) => index !== itemId);
@@ -32,7 +28,6 @@ const useCart = () => {
     });
   };
 
-  // Update item in cart
   const updateItem = (itemId, updatedItem) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.map((item, index) =>

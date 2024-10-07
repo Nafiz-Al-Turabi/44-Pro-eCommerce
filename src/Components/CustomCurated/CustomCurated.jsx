@@ -14,6 +14,7 @@ import curated8 from "./../../assets/Home/Final_USA.png";
 import curated9 from "./../../assets/Home/Final_Sakura.png";
 import { Link } from "react-router-dom";
 import colorWheel from './../../assets/BannerImage/color-wheel.png'
+import redLine from './../../assets/line.svg'
 const CustomCurated = () => {
     const swiperRef = useRef(null);
     const [isBeginning, setIsBeginning] = useState(true);
@@ -33,15 +34,12 @@ const CustomCurated = () => {
 
     return (
         <div className="bg-image py-20">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-2">
                 <div>
                     <p>Custom Curated</p>
                     <div className="flex justify-between mb-10">
-                        <p className="text-5xl my-3 font-bold flex justify-center">
-                            <div className="flex mr-5 flex-col justify-center">
-                                <p>Trending </p>
-                                {/* <img className="w-[200px]" src={redLine} alt="" /> */}
-                            </div>
+                        <p className="text-xl xl:text-5xl my-3 font-bold flex justify-center">
+                            Trending
                             Collection
                         </p>
                         <div className="mb-4">
@@ -104,7 +102,7 @@ const CustomCurated = () => {
             >
                 {curateds.map((curated) => (
                     <SwiperSlide key={curated.title}>
-                        <div className="bg-white p-5">
+                        <div className="bg-white p-5 mx-2">
                             <img src={curated.img} alt={curated.title} />
                             <div className="flex justify-between">
                                 <div>

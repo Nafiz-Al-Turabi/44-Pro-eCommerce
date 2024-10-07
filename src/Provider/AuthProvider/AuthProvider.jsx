@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                console.log('API response data:', response.data);
                 setUser(response.data[0]);
             } catch (error) {
                 console.error('Error fetching user:', error);
@@ -29,12 +28,11 @@ export const AuthProvider = ({ children }) => {
             }
         };
         fetchUser();
-    }, []);
+    }, [user]);
 
     const signup = async (email, password) => {
         try {
             const response = await axiosInstance.post('/signup', { email, password });
-            console.log('Signup successful:', response.data);
         } catch (error) {
             console.error('Signup error:', error);
         }
@@ -46,7 +44,6 @@ export const AuthProvider = ({ children }) => {
             const { token, userData } = response.data;
 
             localStorage.setItem('token', token);
-            console.log(userData);
             setUser(userData);
         } catch (error) {
             console.error('Login error:', error);

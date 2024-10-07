@@ -11,6 +11,7 @@ import navImage3 from './../../assets/Navbar/custom-batting-gloves.png'
 import navImage4 from './../../assets/Navbar/custom-guards.png'
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import { IoIosArrowDown } from 'react-icons/io';
+import useCart from '../../Hooks/useCart';
 
 
 const Navbar = () => {
@@ -19,6 +20,7 @@ const Navbar = () => {
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(true);
     const [isAccOpen, setAccOpen] = useState(false)
     const { user, logout } = useContext(AuthContext)
+    const {cartItems}=useCart()
     // console.log(user);
 
     const toggleAccount = () => {
@@ -127,7 +129,7 @@ const Navbar = () => {
                                     {
                                         isAccOpen &&
                                         <div className='animation flex flex-col absolute w-56 bg-white top-10 right-1 border-2 border-zinc-50 rounded pb-1 shadow-lg '>
-                                            <Link to='/userdashboard' className='py-2 px-3 hover:text-gray-600'>Account settings {user.ane}</Link>
+                                            <Link to='/userdashboard' className='py-2 px-3 hover:text-gray-600'>Account settings</Link>
                                             <Link to='/' className='py-2 px-3 hover:text-gray-600'>Orders</Link>
                                             <Link to='/' className='py-2 px-3 hover:text-gray-600'>Saved Design</Link>
                                             <hr className='my-1' />
@@ -140,7 +142,7 @@ const Navbar = () => {
                         }
                         <Link to="/cart" className="text-gray-800 hover:text-gray-900 relative">
                             <IoCartSharp className='text-3xl' />
-                            <span className='absolute  -top-3.5 left-5 bg-blue-500 w-6 h-6 flex justify-center items-center text-white text-sm rounded-full '>0</span>
+                            <span className='absolute  -top-3.5 left-5 bg-blue-500 w-6 h-6 flex justify-center items-center text-white text-sm rounded-full '>{cartItems.length}</span>
                         </Link>
                     </div>
 
