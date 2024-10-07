@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axiosInstance from '../../Axios/AxiosInstance';
+import useCart from '../../Hooks/useCart';
 
 
 const CheckoutForm = ({ total }) => {
+    const { cartItems } = useCart()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const stripe = useStripe();
     const elements = useElements();
@@ -18,7 +20,7 @@ const CheckoutForm = ({ total }) => {
         try {
             // Create payment intent on your server
             const { data: { clientSecret } } = await axiosInstance.post('/create-payment-intent', {
-                amount: total * 100, 
+                amount: total * 100,
             });
 
             const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(
@@ -35,6 +37,13 @@ const CheckoutForm = ({ total }) => {
             } else if (paymentIntent.status === 'succeeded') {
                 // Handle successful payment here
                 alert('Payment successful!');
+                await axiosInstance.post('/orders', {
+                    customerData: data,
+                    cartItems: cartItems, 
+                });
+
+                // Clear cart items from localStorage
+                localStorage.removeItem('cartItems')
             }
         } catch (err) {
             setError('An error occurred while processing your payment.');
@@ -44,6 +53,7 @@ const CheckoutForm = ({ total }) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='w-full'>
+            {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
             <div className="mb-4">
                 <CardElement className="p-3 border rounded" />
             </div>
@@ -59,7 +69,6 @@ const CheckoutForm = ({ total }) => {
                 {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
             </div>
 
-            {/* Phone Field */}
             <div className="mb-4">
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
                 <input
@@ -67,10 +76,7 @@ const CheckoutForm = ({ total }) => {
                     id="phone"
                     {...register('phone', {
                         required: 'Phone number is required',
-                        pattern: {
-                            value: /^[0-9]{11}$/,
-                            message: 'Phone number must be 11 digits',
-                        },
+
                     })}
                     className={`mt-1 block w-full px-4 py-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-zinc-300 sm:text-sm`}
                     placeholder="Enter your phone number"
@@ -78,7 +84,6 @@ const CheckoutForm = ({ total }) => {
                 {errors.phone && <span className="text-red-500 text-sm">{errors.phone.message}</span>}
             </div>
 
-            {/* Email Field */}
             <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                 <input
@@ -97,7 +102,6 @@ const CheckoutForm = ({ total }) => {
                 {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
             </div>
 
-            {/* Address Field */}
             <div className="mb-6">
                 <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
                 <textarea
@@ -110,11 +114,10 @@ const CheckoutForm = ({ total }) => {
                 {errors.address && <span className="text-red-500 text-sm">{errors.address.message}</span>}
             </div>
 
-            {/* Submit Button */}
             <div className="text-center">
                 <button
                     type="submit"
-
+                    disabled={!stripe || loading}
                     className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                     {loading ? 'Processing...' : `Pay $${total}`}
